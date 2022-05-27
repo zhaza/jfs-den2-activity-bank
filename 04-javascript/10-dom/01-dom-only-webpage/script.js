@@ -29,7 +29,8 @@ function main() {
     const div = document.createElement('div');
     const img = document.createElement('img');
     const ul = document.createElement('ul');
-    img.src = "https://duckduckgo.com/?t=ffab&q=fries&ia=images&iax=images&iai=https%3A%2F%2Fakns-images.eonline.com%2Feol_images%2FEntire_Site%2F2018619%2Frs_1024x1024-180719122106-1024-mcdonalds-fries.jpg%3Ffit%3Dinside%257C900%3Aauto%26output-quality%3D90"
+    img.src = "https://akns-images.eonline.com/eol_images/Entire_Site/2018619/rs_1024x1024-180719122106-1024-mcdonalds-fries.jpg?fit=inside%7C900:auto&output-quality=90"
+    img.style.width = '200px'
     document.body.div
     div.appendChild(img);
 
