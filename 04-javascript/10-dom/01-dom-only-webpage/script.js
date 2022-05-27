@@ -1,13 +1,10 @@
-function addDiv() {
-    const body = document.querySelector('body');
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-}
-
 function heading() {
-    document.querySelector('div');
+    const div = document.createElement('div');
     const h1 = document.createElement('h1');
-    
-
+    h1.innerHTML = "Yo!"
+    const body = document.querySelector('body');
+    document.body.appendChild(div);
+    div.appendChild(h1);
 }
-document.heading.innerHTML = ""
+
+heading()
