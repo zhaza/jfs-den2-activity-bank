@@ -28,7 +28,7 @@ const compObj = {
         } else if (randomNum === 1){
             compChoice = "Scissor"
         } else if (randomNum === 2){
-            compChoice = "p"
+            compChoice = "Paper"
         }
         this._choice = compChoice; 
         return compChoice;
@@ -42,7 +42,8 @@ const gameObj = {
         let userChoice = event.target.value;
         let computerChoice = compObj.generateCompChoice();
         displayCompChoice.innerHTML = computerChoice;
-        displayMatch.innerHTML = `${userChoice} vs. ${computerChoice}`
+        console.log(userChoice);
+        displayMatch.innerHTML = `${userChoice}    vs.    ${computerChoice}`
 
     if ((userChoice === "Rock" && computerChoice === "Scissor") ||
             (userChoice === "Scissor" && computerChoice === "Paper") || 
