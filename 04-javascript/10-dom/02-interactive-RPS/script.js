@@ -1,4 +1,7 @@
+// Dom Variables
 
+let displayCompChoice = document.getElementById('displayCompChoice');
+let displayMatch = document.getElementById('displayMatch');
 
 const userObj = {
     wins: 0,
@@ -21,31 +24,32 @@ const compObj = {
         let randomNum = Math.floor(Math.random() * 3);
         let compChoice;
         if(randomNum === 0){
-            compChoice = "r";
+            compChoice = "Rock";
         } else if (randomNum === 1){
-            compChoice = "s"
+            compChoice = "Scissor"
         } else if (randomNum === 2){
             compChoice = "p"
         }
-
         this._choice = compChoice; 
-
         return compChoice;
     }
 }
 
 const gameObj = {
     gameCounter:0,
-    playGame(){
+    playGame(event){
         this.gameCounter++;
-        let userChoice = userObj.askUserChoice();
-    let computerChoice = compObj.generateCompChoice();
+        let userChoice = event.target.value;
+        let computerChoice = compObj.generateCompChoice();
+        displayCompChoice.innerHTML = computerChoice;
+        displayMatch.innerHTML = `${userChoice} vs. ${computerChoice}`
 
-    if ((userChoice === "r" && computerChoice === "s") ||
-            (userChoice === "s" && computerChoice === "p") || 
-            (userChoice === "p" && computerChoice === "r")) {
+    if ((userChoice === "Rock" && computerChoice === "Scissor") ||
+            (userChoice === "Scissor" && computerChoice === "Paper") || 
+            (userChoice === "Paper" && computerChoice === "Rock")) {
             userObj.wins++;
             compObj.losses++;
+            displayResult
           } else if (userChoice === computerChoice) {
             userObj.ties++;
             compObj.ties++;
@@ -63,9 +67,7 @@ const gameObj = {
     // if(confirm("Play again?")){
     //     this.playGame();
     // }
-    }
-
-    
+    }    
 }
 
 

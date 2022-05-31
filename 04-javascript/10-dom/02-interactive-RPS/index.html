@@ -22,13 +22,13 @@
                             <h2>Choose Wisely!</h2>
                         </div>
                         <div class="col-6 mx-auto my-2">
-                            <button class="btn btn-primary">Rock</button>
+                            <button class="btn btn-primary" id="rock" onclick="gameObj.playGame(event)">Rock</button>
                         </div>
                         <div class="col-6 mx-auto my-2">
-                            <button class="btn btn-primary">Paper</button>
+                            <button class="btn btn-primary" id="paper" onclick="gameObj.playGame(event)">Paper</button>
                         </div>
                         <div class="col-6 mx-auto my-2">
-                            <button class="btn btn-primary">Scissors</button>
+                            <button class="btn btn-primary" id="scissor" onclick="gameObj.playGame(event)">Scissors</button>
                         </div>
                     </div>
                     
@@ -37,11 +37,11 @@
             <div class="col-3 border border-dark"  style="height: 200px;">
                 <div class="row">
                     <div class="col-12">
-                        <h3>Display User Choice vs. Computer Choice Here and deem the winner of the match</h3>
+                        <h3 id="displayMatch">Display User Choice vs. Computer Choice Here and deem the winner of the match</h3>
                     </div>
                     
                     <div class="col">
-                        <h4>Display who won here</h4>
+                        <h4></h4>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <h3>Computers Choice</h3>
                     </div>
                     <div class="col-8 card mt-3" style="height: 100px">
-                        <h4>Display Computers Choice here</h4>
+                        <h4 id="displayCompChoice">Display Computers Choice here</h4>
                     </div>
                 </div>
             </div>
