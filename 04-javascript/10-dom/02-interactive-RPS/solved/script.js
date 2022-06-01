@@ -56,9 +56,9 @@ const gameObj = {
         
         this.gameCounter++;
         let userChoice = event.target.value;
-    let computerChoice = compObj.generateCompChoice();
-    displayCompChoice.innerHTML = computerChoice;
-    displayVs.innerHTML = `${userChoice}    vs.    ${computerChoice}`
+        let computerChoice = compObj.generateCompChoice();
+        displayCompChoice.innerHTML = computerChoice;
+        displayVs.innerHTML = `${userChoice}    vs.    ${computerChoice}`
         this.resetColorAndResults();
 
         setTimeout(function(){
