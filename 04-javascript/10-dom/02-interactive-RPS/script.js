@@ -1,85 +1,77 @@
 // Dom Variables
 
-let displayCompChoice = document.getElementById('displayCompChoice');
-let displayMatch = document.getElementById('displayMatch');
+let displayCompChoice = document.getElementById("displayCompChoice");
+let displayVs = document.getElementById("displayVs");
+let displayGamesPlayed = document.getElementById("displayGamesPlayed");
+let displayWins = document.getElementById("displayWins");
+let displayLosses = document.getElementById("displayLosses");
+let displayTies = document.getElementById("displayTies");
+let displayResult = document.getElementById("displayResult");
 
 const userObj = {
-    wins: 0,
-    losses: 0,
-    ties: 0,
-    _choice: "",
-    askUserChoice(){
-        let userChoice = "";
-        this._choice = userChoice; 
-        return userChoice;
-    }
-}
+  wins: 0,
+  losses: 0,
+  ties: 0,
+  _choice: "",
+  askUserChoice() {
+    let userChoice = "";
+    this._choice = userChoice;
+    return userChoice;
+  },
+};
 
 const compObj = {
-    wins: 0,
-    losses: 0,
-    ties: 0,
-    _choice: "",
-    generateCompChoice(){
-        let randomNum = Math.floor(Math.random() * 3);
-        let compChoice;
-        if(randomNum === 0){
-            compChoice = "Rock";
-        } else if (randomNum === 1){
-            compChoice = "Scissor"
-        } else if (randomNum === 2){
-            compChoice = "Paper"
-        }
-        this._choice = compChoice; 
-        return compChoice;
+  wins: 0,
+  losses: 0,
+  ties: 0,
+  _choice: "",
+  generateCompChoice() {
+    let randomNum = Math.floor(Math.random() * 3);
+    let compChoice;
+    if (randomNum === 0) {
+      compChoice = "Rock";
+    } else if (randomNum === 1) {
+      compChoice = "Scissors";
+    } else if (randomNum === 2) {
+      compChoice = "Paper";
     }
-}
+    this._choice = compChoice;
+    return compChoice;
+  },
+};
 
 const gameObj = {
-    gameCounter:0,
-    playGame(event){
-        this.gameCounter++;
-        let userChoice = event.target.value;
-        let computerChoice = compObj.generateCompChoice();
-        displayCompChoice.innerHTML = computerChoice;
-        console.log(userChoice);
-        displayMatch.innerHTML = `${userChoice}    vs.    ${computerChoice}`
-
-    if ((userChoice === "Rock" && computerChoice === "Scissor") ||
-            (userChoice === "Scissor" && computerChoice === "Paper") || 
+  gameCounter: 0,
+  playGame(event) {
+    this.gameCounter++;
+    let userChoice = event.target.innerText;
+    let computerChoice = compObj.generateCompChoice();
+    displayCompChoice.innerText = computerChoice;
+    displayVs.innerText = `${userChoice}    vs.    ${computerChoice}`;
+    displayGamesPlayed.innerText = this.gameCounter;
+    if ((userChoice === "Rock" && computerChoice === "Scissors") ||
+            (userChoice === "Scissors" && computerChoice === "Paper") || 
             (userChoice === "Paper" && computerChoice === "Rock")) {
-            userObj.wins++;
-            compObj.losses++;
-            displayResult
-          } else if (userChoice === computerChoice) {
-            userObj.ties++;
-            compObj.ties++;
-          } else {
-            userObj.losses++;
-            compObj.wins++;
-          }
-
-    //     alert(`Current Standings:
-    // You won ${userObj.wins} time(s) and the computer won ${compObj.wins} time(s).
-    // You lost ${userObj.losses} time(s) and the computer lost ${compObj.losses} time(s).
-    // There was ${userObj.ties} tie(s).
-    // ${(userObj.wins > compObj.wins ? `You Win!`: `The Computer Wins!`)}`)
-
-    // if(confirm("Play again?")){
-    //     this.playGame();
-    // }
-    }    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+              userObj.wins++;
+              // compObj.losses++;
+              // displayGamesWon.parentElement.style.backgroundColor = "green";
+              // displayGamesWon.parentElement.style.color = "white";
+              displayResult.innerHTML = `Your ${userChoice} won this match!`
+            } else if (userChoice === computerChoice) {
+              userObj.ties++;
+              // compObj.ties++;
+              // displayGamesTied.parentElement.style.backgroundColor = "yellow";
+              displayResult.innerHTML = `The game is a tie`
+            } else {
+              userObj.losses++;
+              // compObj.wins++;
+              // displayGamesLost.parentElement.style.backgroundColor = "red";
+              // displayGamesLost.parentElement.style.color = "white";
+              displayResult.innerHTML = (userChoice === "Scissors" ? `Your Scissors were defeated...` : `Your ${userChoice} was defeated...`)
+            }
+            
+          displayWins.innerHTML = userObj.wins;
+          displayLosses.innerHTML = userObj.losses;
+          displayTies.innerHTML = userObj.ties
+  },
+};
