@@ -1,6 +1,7 @@
 // import the functions
 
-import { add, subtract } from "./utils.js";
+// const { add, subtract } = require('./utils.js');
+import { add, subtract } from './utils.js';
 
 let sum = add(2,2)
 console.log(sum);

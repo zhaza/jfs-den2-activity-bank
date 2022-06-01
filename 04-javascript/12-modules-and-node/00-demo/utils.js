@@ -10,3 +10,4 @@ const subtract = (a, b) => {
 
 // export the functions
 export { add, subtract };
+// module.exports = { add, subtract };
