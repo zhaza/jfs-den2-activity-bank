@@ -1,5 +1,4 @@
 // Dom Variables
-
 let displayCompChoice = document.getElementById("displayCompChoice");
 let displayVs = document.getElementById("displayVs");
 let displayGamesPlayed = document.getElementById("displayGamesPlayed");
@@ -43,12 +42,30 @@ const compObj = {
 const gameObj = {
   gameCounter: 0,
   playGame(event) {
+    function reset() {
+      if(userObj.wins > userObj.losses) {
+        displayResult.innerText = "Player Won";
+      } else if (userObj.wins < userObj.losses) {
+        displayResult.innerText = "Player Lost";
+      } else {
+        displayResult.innerText = "Tie!"
+      }
+      gameObj.gameCounter = 0;
+      userObj.wins = 0;
+      userObj.losses = 0;
+      userObj.ties = 0;
+      return displayVs.innerText = "Wanna play more?"
+    }
     this.gameCounter++;
     let userChoice = event.target.innerText;
     let computerChoice = compObj.generateCompChoice();
     displayCompChoice.innerText = computerChoice;
     displayVs.innerText = `${userChoice}    vs.    ${computerChoice}`;
     displayGamesPlayed.innerText = this.gameCounter;
+    if (this.gameCounter === 5) {
+      return reset();
+    }
+  
     if ((userChoice === "Rock" && computerChoice === "Scissors") ||
             (userChoice === "Scissors" && computerChoice === "Paper") || 
             (userChoice === "Paper" && computerChoice === "Rock")) {
@@ -73,5 +90,6 @@ const gameObj = {
           displayWins.innerHTML = userObj.wins;
           displayLosses.innerHTML = userObj.losses;
           displayTies.innerHTML = userObj.ties
+          // reset();
   },
 };
