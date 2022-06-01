@@ -1,6 +1,6 @@
 // import the functions
 
-import { subtract, add } from "./utils.js";
+import { add, subtract } from "./utils.js";
 
 let sum = add(2,2)
 console.log(sum);
