@@ -1,5 +1,4 @@
 // Dom Variables
-
 let displayCompChoice = document.getElementById("displayCompChoice");
 let displayVs = document.getElementById("displayVs");
 let displayGamesPlayed = document.getElementById("displayGamesPlayed");
