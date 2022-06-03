@@ -3,26 +3,36 @@
 function makeRequest(location) {
     return new Promise((resolve, reject) => {
         console.log(`Making Request to ${location}`);
-        if (location === 'Google') {
-            resolve('Google says hi');
+        if (location === "Google") {
+            resolve("Google says hi");
         } else {
-            reject('We can only talk to Google');
+            reject("We can only talk to Google");
         }
-    })
+    });
 }
 
 function processRequest(response) {
     return new Promise((resolve, reject) => {
-        console.log('Processing response')
-        resolve(`Extra Information + ${response}`)
-    })
+        console.log("Processing response");
+        resolve(`Extra Information + ${response}`);
+    });
 }
 
-makeRequest('Google').then(response => {
-    console.log('Response Received');
-    return processRequest(response);
-}).then(processedResponse => {
-    console.log(processedResponse);
-}).catch (err => {
+async function request() {
+    try {
+        const response = await makeRequest('California');
+        console.log(response);
+    }
+    catch (err) {
     console.log(err);
-})
+    }
+    try {
+        const response = await processRequest('jammed');
+        console.log(response);
+    }
+    catch (err) {
+    console.log(err);
+    }
+}
+
+request();
