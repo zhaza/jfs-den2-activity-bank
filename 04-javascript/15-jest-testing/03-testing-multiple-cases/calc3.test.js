@@ -1,4 +1,4 @@
-// const { sum, difference, oddOrEven } = require("./calc");
+const { sum, difference, oddOrEven } = require("./calc");
 
 describe("Calculator functions ", () => {
   test("should output sum of 2 numbers", () => {
@@ -13,6 +13,7 @@ describe("Calculator functions ", () => {
 
   test('should be an even number', () => {
     const result = oddOrEven(2);
-    expect(result).toBe(`${input} is an even number`)
+    expect(result).toBe(`2 is an even number`)
   })
 });
+

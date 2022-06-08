@@ -4,7 +4,7 @@ const sum = (a,b) => {
 const difference = (a,b) => {
     return a - b;
   }
-const oddOrEven = (num) => {
+const oddOrEven = (a) => {
     if(a % 2 === 0){
         return `${a} is an even number`
     } else {

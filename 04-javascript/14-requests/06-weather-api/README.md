@@ -6,10 +6,11 @@ You will need to create a free account in order to get your own api-key. You can
 
 # We are not worried about how this application looks, just how it functions. 
     - The basic html has been created for you, please feel free to make it look better once you have full functionality.
-    - You will need to display the "conditions".
-    - Also display the image associated with the conditions.
-    - The current temperature in fahrenheit should be shown.
-    - Make sure to also display the name of the city that was searched.
+    - Display
+        - "conditions"
+        - image, associated with the conditions
+        - current temperature in fahrenheit
+        - city name
 
 ## skills you will have to use
     - DOM manipulation
