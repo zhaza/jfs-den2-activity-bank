@@ -7,13 +7,6 @@ const get = async () => {
     throw Error(`There is an error with status ${response.status}`);
   }
   let weather = await response.json();
-  // bonus-buttons
-  let bonus = document.getElementById('bonus-buttons');
-  let button = document.createElement('button');
-  let name = weather.location.name;
-  button.innerText = name;
-  button.id = name
-  bonus.appendChild(button);
   return weather;
 };
 
@@ -34,7 +27,12 @@ const prepare = async () => {
   let string = current.current.condition.icon;
   let image = string.slice(21);
   let newSpot = new Spot(name, tempF, conditionText, image);
+  // Set bonus-buttons
   window.localStorage.setItem(newSpot.name, JSON.stringify(newSpot));
+  let bonus = document.getElementById("bonus-buttons");
+  let button = document.createElement("button");
+  bonus.appendChild(button);
+  button.innerText = name;
   return newSpot;
 };
 
@@ -55,7 +53,7 @@ const show = async () => {
   return place;
 };
 
-// EVENT LISTENERS
+// EVENT LISTENERS FORM
 let form = document.querySelector("form");
 form.addEventListener("click", show);
 form.addEventListener("keypress", function (e) {
@@ -65,7 +63,13 @@ form.addEventListener("keypress", function (e) {
   }
 });
 
-let bonus = document.getElementById('bonus-buttons');
-bonus.forEach(element => {
-  let button = document.getElementById()
+// EVENT LISTENERS BONUS-BUTTONS
+document.addEventListener("click", function (e) {
+  let KeyName = e.target.innerText;
+  let string = JSON.parse(window.localStorage.getItem(KeyName));
+  let weather = document.getElementById("weather");
+  weather.innerHTML = `
+  <h1>${string.name} ${string.temp} ${string.condition}</h1>
+  <img src="./${string.image}"}>
+  `;
 });
