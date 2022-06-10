@@ -28,12 +28,14 @@ const prepare = async () => {
   let image = string.slice(21);
   let newSpot = new Spot(name, tempF, conditionText, image);
   // Set bonus-buttons
-  window.localStorage.setItem(newSpot.name, JSON.stringify(newSpot));
-  let bonus = document.getElementById("bonus-buttons");
-  let button = document.createElement("button");
-  bonus.appendChild(button);
-  button.innerText = name;
-  return newSpot;
+  if(!localStorage.getItem(name)){
+    window.localStorage.setItem(newSpot.name, JSON.stringify(newSpot));
+    let bonus = document.getElementById("bonus-buttons");
+    let button = document.createElement("button");
+    bonus.appendChild(button);
+    button.innerText = name;
+  }
+    return newSpot;
 };
 
 // DISPLAY weather object
@@ -66,10 +68,19 @@ form.addEventListener("keypress", function (e) {
 // EVENT LISTENERS BONUS-BUTTONS
 document.addEventListener("click", function (e) {
   let KeyName = e.target.innerText;
-  let string = JSON.parse(window.localStorage.getItem(KeyName));
-  let weather = document.getElementById("weather");
-  weather.innerHTML = `
-  <h1>${string.name} ${string.temp} ${string.condition}</h1>
-  <img src="./${string.image}"}>
-  `;
+  if (KeyName === 'Clear') {
+    window.localStorage.clear();
+    let bonus = document.getElementById('bonus-buttons');
+    let weather = document.getElementById('weather');
+    bonus.innerHTML = "";
+    weather.innerHTML = "";
+  } else {
+    let string = JSON.parse(window.localStorage.getItem(KeyName));
+    let weather = document.getElementById("weather");
+    weather.innerHTML = `
+    <h1>${string.name} ${string.temp} ${string.condition}</h1>
+    <img src="./${string.image}"}>
+    `;
+  }
 });
+
